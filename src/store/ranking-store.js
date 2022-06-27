@@ -21,7 +21,17 @@ const rankingStore = new Vuex.Store({
   getters:{
     getHotRankingList:state => {
       return state.hotRankingList
+    },
+    getUpRankingList:state => {
+      return state.upRankingList
+    },
+    getNewRankingList:state => {
+      return state.newRankingList
+    },
+    getOriginalRankingList:state => {
+      return state.originalRankingList
     }
+
   },
   mutations:{
     test(){
@@ -51,18 +61,17 @@ const rankingStore = new Vuex.Store({
         //获取4个榜单的数据
         getRanking(ctx.state.hotRankingID).then(res => {
           ctx.state.hotRankingList = res.playlist
-          console.log(ctx.state.hotRankingList)
         })
-        // getRanking(ctx.state.upRankingID).then(res => {
-        //   // ctx.state.upRankingList = res.playlist
-        //   console.log(res)
-        // })
-        // getRanking(ctx.state.newRankingID).then(res => {
-        //   ctx.newRankingList = res.playlist
-        // })
-        // getRanking(ctx.state.originalRankingID).then(res => {
-        //   ctx.state.originalRankingList = res.playlist
-        // })
+        getRanking(ctx.state.upRankingID).then(res => {
+          console.log(res)
+          ctx.state.upRankingList = res.playlist
+        })
+        getRanking(ctx.state.newRankingID).then(res => {
+          ctx.state.newRankingList = res.playlist
+        })
+        getRanking(ctx.state.originalRankingID).then(res => {
+          ctx.state.originalRankingList = res.playlist
+        })
       })
     },
 

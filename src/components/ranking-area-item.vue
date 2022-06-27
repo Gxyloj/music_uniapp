@@ -1,0 +1,109 @@
+<template>
+  <view class="item">
+    <view class="info">
+      <view class="title">{{ item.name }}</view>
+      <view v-for="(item,index) in item.songList" :key="item.id">
+        <view class="song-info">
+          <view class="song">{{ index + 1 }}. {{ item.name }}</view>
+          <view class="ar"> - {{ item.ar[0].name }}</view>
+          <view class="ar" v-if="item.ar[1]">·{{ item.ar[1].name }}</view>
+        </view>
+      </view>
+    </view>
+    <view class="album">
+      <image class="image" :src="item.coverImgUrl" mode="heightFix"></image>
+      <view class="count">{{ formatCount(item.playCount) }}</view>
+    </view>
+  </view>
+</template>
+
+<script>
+import {formatCount} from "@/utils/format";
+
+export default {
+  name: "ranking-area-item",
+  props: {
+    item: {
+      type: Object,
+      default: {}
+    }
+  },
+  methods:{
+    formatCount(data){
+      return formatCount(data)
+    }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+.item {
+  background-color: #fff;
+  border-radius: 12rpx;
+  box-shadow: 20px 20px 60px #bebebe,
+  -20px -20px 60px #ffffff;
+  overflow: hidden;
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  height: 280rpx;
+}
+
+.info {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  padding-left: 10rpx;
+}
+
+.title {
+  font-size: 30rpx;
+  margin-left: 20rpx;
+  font-weight: 550;
+}
+
+
+.song-info {
+  display: flex;
+}
+
+.song {
+  padding-left: 10rpx;
+  font-size: 24rpx;
+  max-width: 55%;
+  display: inline-block;
+  /* 显示两行 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ar {
+  font-size: 24rpx;
+  color: #555;
+  display: inline-block;
+  white-space: pre-wrap;
+}
+
+.image {
+  height: 100%;
+}
+
+.album {
+  position: relative;
+  display: flex;
+}
+
+.count {
+  position: absolute;
+  color: #fff;
+  bottom: 0;
+  right: 6rpx;
+  font-size: 24rpx;
+  border-radius: 12rpx;
+  background: rgba(0, 0, 0, .5);
+  padding: 6rpx 10rpx;
+}
+
+
+</style>

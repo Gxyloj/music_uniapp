@@ -3,12 +3,12 @@
     <!--  歌单列表-->
     <area-header :title="title"/>
     <!--  横向滚动区域-->
-        <scroll-view scroll-x="true" class="menu-list">
-          <view v-for="(item,index) in songMenu" class="menu-item" :key="index">
-            <song-menu-item :item="item"/>
-<!--            {{index}}-->
-          </view>
-        </scroll-view>
+    <scroll-view scroll-x="true" class="menu-list">
+      <view v-for="(item,index) in songMenu" class="menu-item" :key="index">
+        <song-menu-item :item="item"/>
+        <!--            {{index}}-->
+      </view>
+    </scroll-view>
 
   </view>
 </template>
@@ -34,6 +34,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+//去除滚动条
+scroll-view ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background-color: transparent;
+}
+
 .menu-list {
   position: relative;
   left: -20rpx;
@@ -58,8 +66,6 @@ export default {
 .menu-item:last-child {
   margin-right: 20rpx;
 }
-
-
 
 
 </style>

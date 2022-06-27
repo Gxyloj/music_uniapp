@@ -3,19 +3,25 @@
   <view class="item">
     <view class="album">
       <image class="image" mode="widthFix" :src="item.coverImgUrl"></image>
-      <view class="count">{{ item.playCount }}</view>
+      <view class="count">{{ formatCount(item.playCount) }}</view>
     </view>
     <view class="title">{{ item.name }}</view>
   </view>
 </template>
 
 <script>
+import {formatCount} from "@/utils/format";
 export default {
   name: "song-menu-item",
   props: {
     item: {
       type: Object,
       default: {}
+    }
+  },
+  methods:{
+    formatCount(data){
+      return formatCount(data)
     }
   }
 }
