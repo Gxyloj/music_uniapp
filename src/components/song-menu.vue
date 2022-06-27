@@ -4,7 +4,7 @@
     <area-header :title="title"/>
     <!--  横向滚动区域-->
         <scroll-view scroll-x="true" class="menu-list">
-          <view v-for="(item,index) in songMenu" class="menu-item">
+          <view v-for="(item,index) in songMenu" class="menu-item" :key="index">
             <song-menu-item :item="item"/>
 <!--            {{index}}-->
           </view>

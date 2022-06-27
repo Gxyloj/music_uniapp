@@ -8,6 +8,7 @@
             circular>
       <swiper-item v-for="(item,index) in bannerList"
                    class="swiper-item"
+                   :key="index"
       >
         <image :src="item.imageUrl" mode="widthFix"></image>
       </swiper-item>
@@ -16,7 +17,7 @@
     <view class="recommend-song" v-if="rankingList[3].songList">
       <area-header title="推荐歌曲"/>
       <view class="song-list">
-        <view v-for="item in rankingList[3].songList">
+        <view v-for="item in rankingList[3].songList" :key="item.id">
           <song-item-v1 :item="item"/>
         </view>
       </view>
