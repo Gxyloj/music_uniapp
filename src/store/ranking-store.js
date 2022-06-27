@@ -18,21 +18,6 @@ const state = {
 
 const rankingStore = new Vuex.Store({
   state,
-  getters:{
-    getHotRankingList:state => {
-      return state.hotRankingList
-    },
-    getUpRankingList:state => {
-      return state.upRankingList
-    },
-    getNewRankingList:state => {
-      return state.newRankingList
-    },
-    getOriginalRankingList:state => {
-      return state.originalRankingList
-    }
-
-  },
   mutations:{
     test(){
       console.log(111)
@@ -63,7 +48,6 @@ const rankingStore = new Vuex.Store({
           ctx.state.hotRankingList = res.playlist
         })
         getRanking(ctx.state.upRankingID).then(res => {
-          console.log(res)
           ctx.state.upRankingList = res.playlist
         })
         getRanking(ctx.state.newRankingID).then(res => {

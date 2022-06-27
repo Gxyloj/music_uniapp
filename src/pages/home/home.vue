@@ -41,7 +41,6 @@
         </view>
       </view>
     </view>
-
   </view>
 </template>
 
@@ -49,7 +48,7 @@
 import {getBanner, getSongMenu} from "@/servies/api_home";
 import {rankingStore} from "@/store/ranking-store";
 import AreaHeader from "@/components/area-header";
-import {mapGetters} from 'vuex'
+import {mapGetters,mapState} from 'vuex'
 import SongItemV1 from "@/components/song-item-v1";
 import SongMenu from "@/components/song-menu";
 import RankingAreaItem from "@/components/ranking-area-item";
@@ -80,25 +79,27 @@ export default {
       this.hotSongMenu = res.playlists
     })
   },
-  computed: {
-    ...mapGetters([
-      'getHotRankingList',
-      'getUpRankingList',
-      'getNewRankingList',
-      'getOriginalRankingList'
+
+  computed:{
+    ...mapState([
+        'hotRankingList',
+        'upRankingList',
+        'newRankingList',
+        'originalRankingList'
     ])
   },
   watch: {
-    getHotRankingList: function (item) {
-      this.setNewRankingList(3, item)
+
+    hotRankingList:function(item){
+      this.setNewRankingList(3,item)
     },
-    getUpRankingList:function(item){
+    upRankingList:function(item){
       this.setNewRankingList(0,item)
     },
-    getNewRankingList:function(item){
+    newRankingList:function(item){
       this.setNewRankingList(1,item)
     },
-    getOriginalRankingList(item){
+    originalRankingList:function (item){
       this.setNewRankingList(2,item)
     }
   },
@@ -112,7 +113,6 @@ export default {
       }
       let originRanking = {...this.rankingList, [id]: newRankingList}
       this.rankingList = originRanking
-      console.log(this.rankingList)
     }
   }
 
