@@ -10,7 +10,7 @@
                    class="swiper-item"
                    :key="index"
       >
-        <image :src="item.imageUrl" mode="widthFix"></image>
+        <image :src="item.pic" mode="widthFix"></image>
       </swiper-item>
     </swiper>
     <!--    推荐歌曲-->
@@ -51,6 +51,7 @@ export default {
     getBanner().then(res => {
       if (res.code !== 200) return
       this.bannerList = res.banners
+      console.log(this.bannerList)
     })
     //获取榜单数据
     this.$store.dispatch("getRankingDataAction")

@@ -50,6 +50,20 @@
 			}
 		}
 	},
+	// "h5": {
+	// 	"devServer": {
+	// 		"port": 8000,
+	// 		            "disableHostCheck": true,
+	// 		            "proxy": {
+	// 		                "/dpc": {
+	// 		                    "target": "https://netease-cloud-music-api-seven-zeta.vercel.app",
+	// 		                    "changeOrigin": true,
+	// 		                    "secure": false
+	// 		                }
+	// 		            }
+
+	// 	}
+	// },
 	"quickapp": { /* 快应用特有相关 */
 
 	},
